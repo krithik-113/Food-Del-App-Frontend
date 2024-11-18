@@ -6,7 +6,6 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
-  const url = "https://food-delivery-app-backend-4ncu.onrender.com";
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
@@ -25,7 +24,6 @@ const StoreContextProvider = (props) => {
 
   const getTotalCartItem = () => {
     let totalAmount = 0;
-    console.log(food_list,cartItems)
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = food_list.find((product) => product._id === item);
@@ -65,8 +63,7 @@ const StoreContextProvider = (props) => {
     removeFromCart,
     getTotalCartItem,
     token,
-    setToken,
-    url
+    setToken
   };
   return (
     <StoreContext.Provider value={contextValue}>
